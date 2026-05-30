@@ -1,4 +1,10 @@
 <script lang="ts">
+	// Self-hosted fonts (matches the tessy project): Poppins for body, Archivo for headings.
+	import '@fontsource/poppins/400.css';
+	import '@fontsource/poppins/700.css';
+	import '@fontsource/archivo/400.css';
+	import '@fontsource/archivo/700.css';
+
 	// Edit these to make the site yours.
 	const name = 'Tyler Auer';
 	const tagline = 'Software engineer. Builder of small, sharp tools.';
@@ -33,6 +39,12 @@
 		--fg: #e7e9ee;
 		--muted: #9aa3b2;
 		--accent: #6ea8fe;
+
+		/* Font stacks mirrored from the tessy project. */
+		--font-body:
+			'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+			Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+		--font-display: 'Archivo', Georgia, serif;
 	}
 
 	:global(html, body) {
@@ -43,8 +55,7 @@
 	:global(body) {
 		background: var(--bg);
 		color: var(--fg);
-		font-family:
-			ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+		font-family: var(--font-body);
 		-webkit-font-smoothing: antialiased;
 	}
 
@@ -62,6 +73,8 @@
 
 	h1 {
 		margin: 0;
+		font-family: var(--font-display);
+		font-weight: 700;
 		font-size: clamp(2.5rem, 8vw, 4rem);
 		letter-spacing: -0.02em;
 	}

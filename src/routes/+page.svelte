@@ -7,7 +7,12 @@
 
 	// Edit these to make the site yours.
 	const name = 'Tyler Auer';
-	const tagline = 'Software engineer. Builder of small, sharp tools.';
+	const lines = [
+		'Husband and 3x Dad near Boulder, CO',
+		'Eng at Nextdoor. Former math teacher.',
+		'Lover of puzzles, board games, and long walks on exposed ridgelines'
+	];
+	const description = lines.join(' · ');
 
 	const links = [
 		{ label: 'GitHub', href: 'https://github.com/tylerauer' },
@@ -17,13 +22,17 @@
 
 <svelte:head>
 	<title>{name}</title>
-	<meta name="description" content={tagline} />
+	<meta name="description" content={description} />
 </svelte:head>
 
 <main>
 	<section class="card">
 		<h1>{name}</h1>
-		<p class="tagline">{tagline}</p>
+		<div class="tagline">
+			{#each lines as line}
+				<p>{line}</p>
+			{/each}
+		</div>
 
 		<nav class="links" aria-label="Social links">
 			{#each links as link}
@@ -67,8 +76,9 @@
 	}
 
 	.card {
-		max-width: 32rem;
-		text-align: center;
+		width: 100%;
+		max-width: 1000px;
+		text-align: left;
 	}
 
 	h1 {
@@ -80,16 +90,20 @@
 	}
 
 	.tagline {
-		margin: 0.75rem 0 2rem;
+		margin: 1rem 0 2rem;
 		color: var(--muted);
 		font-size: 1.125rem;
 		line-height: 1.5;
 	}
 
+	.tagline p {
+		margin: 0.15rem 0;
+	}
+
 	.links {
 		display: flex;
 		gap: 1.5rem;
-		justify-content: center;
+		justify-content: flex-start;
 		flex-wrap: wrap;
 	}
 

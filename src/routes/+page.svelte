@@ -4,9 +4,8 @@
 	const tagline = 'Software engineer. Builder of small, sharp tools.';
 
 	const links = [
-		{ label: 'Email', href: 'mailto:tyler.auer@gmail.com' },
-		{ label: 'GitHub', href: 'https://github.com/TylerAuer' },
-		{ label: 'LinkedIn', href: 'https://www.linkedin.com/in/' }
+		{ label: 'GitHub', href: 'https://github.com/tylerauer' },
+		{ label: 'LinkedIn', href: 'https://www.linkedin.com/in/tyler-auer-like-hour/' }
 	];
 </script>
 

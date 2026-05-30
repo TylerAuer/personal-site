@@ -10,6 +10,11 @@ permissions:
   pages: write
   id-token: write
 
+# Run bundled JS actions on Node.js 24 (silences the Node.js 20 deprecation
+# warning until the actions ship Node 24 by default).
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 # Allow one concurrent deployment; skip queued runs in between.
 concurrency:
   group: pages

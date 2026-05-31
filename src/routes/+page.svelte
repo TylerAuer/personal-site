@@ -1,18 +1,9 @@
 <script lang="ts">
-  // Self-hosted fonts (matches the tessy project): Poppins for body, Archivo for headings.
-  import "@fontsource/poppins/400.css";
-  import "@fontsource/poppins/700.css";
-  import "@fontsource/archivo/400.css";
-  import "@fontsource/archivo/700.css";
-  // Handwritten font for the "like 'hour'" pronunciation note.
-  import "@fontsource/caveat/600.css";
+  import SocialLinks from "$lib/SocialLinks.svelte";
 
-  const links = [
-    { label: "GitHub", href: "https://github.com/tylerauer" },
-    {
-      label: "LinkedIn",
-      href: "https://www.linkedin.com/in/tyler-auer-like-hour/",
-    },
+  const projects = [
+    { label: "Super Bowl Props", href: "/super-bowl-props" },
+    { label: "Fruit Matrix", href: "/fruit-matrix" },
   ];
 </script>
 
@@ -48,6 +39,11 @@
         </span></span
       >
     </h1>
+
+    <div class="social-row">
+      <SocialLinks />
+    </div>
+
     <div class="tagline">
       <p>Husband and dad of three near Boulder, CO</p>
       <p>
@@ -59,53 +55,29 @@
       <p>Lover of board games and long walks on exposed ridgelines</p>
     </div>
 
-    <nav class="links" aria-label="Social links">
-      {#each links as link}
-        <a href={link.href} rel="noopener noreferrer">{link.label}</a>
+    <nav class="links projects" aria-label="Projects">
+      <span class="projects-label">Projects</span>
+      {#each projects as project}
+        <a href={project.href}>{project.label}</a>
       {/each}
     </nav>
   </section>
 </main>
 
 <style>
-  :global(:root) {
-    --bg: #0f1115;
-    --fg: #e7e9ee;
-    --muted: #9aa3b2;
-    --accent: #b794f6;
-
-    /* Font stacks mirrored from the tessy project. */
-    --font-body: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI",
-      Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
-      sans-serif;
-    --font-display: "Archivo", Georgia, serif;
-  }
-
-  :global(html, body) {
-    margin: 0;
-    height: 100%;
-  }
-
-  :global(body) {
-    background: var(--bg);
-    color: var(--fg);
-    font-family: var(--font-body);
-    -webkit-font-smoothing: antialiased;
-  }
-
-  /* Content stays horizontally centered with equal left/right margins.
-     Vertically: ~1/3 down on desktop, near the top on mobile. */
+  /* Content stays horizontally centered with equal left/right margins,
+     and vertically centered in the viewport. */
   main {
     min-height: 100dvh;
     display: grid;
     justify-items: center;
-    align-content: start;
-    padding: 33vh 2rem 2rem;
+    align-content: center;
+    padding: 2rem;
   }
 
   @media (max-width: 640px) {
     main {
-      padding: clamp(2rem, 6vh, 4rem) 1.25rem 2rem;
+      padding: 2rem 1.25rem;
     }
   }
 
@@ -120,7 +92,7 @@
   h1 {
     margin: 0;
     /* Reserve space below the name for the handwritten annotation. */
-    padding-bottom: 3.5rem;
+    padding-bottom: 2.5rem;
     font-family: var(--font-display);
     font-weight: 700;
     font-size: clamp(2.5rem, 8vw, 4rem);
@@ -164,7 +136,7 @@
   }
 
   .tagline {
-    margin: 1rem 0 2rem;
+    margin: 0 0 2rem;
     color: var(--muted);
     /* Smaller on phones so statements fit on fewer lines. */
     font-size: clamp(1rem, 4.5vw, 1.125rem);
@@ -183,17 +155,6 @@
     margin-bottom: 0;
   }
 
-  .tagline a {
-    color: var(--accent);
-    text-decoration: none;
-    border-bottom: 1px solid transparent;
-    transition: border-color 0.15s ease;
-  }
-
-  .tagline a:hover {
-    border-bottom-color: currentColor;
-  }
-
   .links {
     display: flex;
     gap: 1.5rem;
@@ -202,14 +163,26 @@
   }
 
   .links a {
-    color: var(--accent);
-    text-decoration: none;
     font-weight: 500;
-    border-bottom: 1px solid transparent;
-    transition: border-color 0.15s ease;
   }
 
-  .links a:hover {
-    border-bottom-color: currentColor;
+  /* Social icons sit evenly spaced between the name (whose padding reserves
+     room for the annotation) and the tagline text. The icons are under
+     "Tyler" while the annotation is under "Auer", so equal top/bottom gaps
+     here read as balanced. */
+  .social-row {
+    margin: 0 0 2.5rem;
+  }
+
+  /* "Projects:" label above its links, each project on its own line. */
+  .projects {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .projects-label {
+    color: var(--fg);
+    font-weight: 700;
   }
 </style>

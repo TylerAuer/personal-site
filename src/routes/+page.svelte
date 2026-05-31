@@ -1,121 +1,196 @@
 <script lang="ts">
-	// Self-hosted fonts (matches the tessy project): Poppins for body, Archivo for headings.
-	import '@fontsource/poppins/400.css';
-	import '@fontsource/poppins/700.css';
-	import '@fontsource/archivo/400.css';
-	import '@fontsource/archivo/700.css';
+  // Self-hosted fonts (matches the tessy project): Poppins for body, Archivo for headings.
+  import "@fontsource/poppins/400.css";
+  import "@fontsource/poppins/700.css";
+  import "@fontsource/archivo/400.css";
+  import "@fontsource/archivo/700.css";
+  // Handwritten font for the "like 'hour'" pronunciation note.
+  import "@fontsource/caveat/600.css";
 
-	// Edit these to make the site yours.
-	const name = 'Tyler Auer';
-	const lines = [
-		'Husband and 3x Dad near Boulder, CO',
-		'Eng at Nextdoor. Former math teacher.',
-		'Lover of puzzles, board games, and long walks on exposed ridgelines'
-	];
-	const description = lines.join(' · ');
-
-	const links = [
-		{ label: 'GitHub', href: 'https://github.com/tylerauer' },
-		{ label: 'LinkedIn', href: 'https://www.linkedin.com/in/tyler-auer-like-hour/' }
-	];
+  const links = [
+    { label: "GitHub", href: "https://github.com/tylerauer" },
+    {
+      label: "LinkedIn",
+      href: "https://www.linkedin.com/in/tyler-auer-like-hour/",
+    },
+  ];
 </script>
 
 <svelte:head>
-	<title>{name}</title>
-	<meta name="description" content={description} />
+  <title>Tyler Auer</title>
+  <meta
+    name="description"
+    content="Husband and dad of three near Boulder, CO · Eng at Nextdoor. Former math teacher. · Founder of tessy.fun, a site for puzzle lovers. · Lover of puzzles, board games, and long walks on exposed ridgelines"
+  />
 </svelte:head>
 
 <main>
-	<section class="card">
-		<h1>{name}</h1>
-		<div class="tagline">
-			{#each lines as line}
-				<p>{line}</p>
-			{/each}
-		</div>
+  <section class="card">
+    <h1>
+      Tyler <span class="last-name"
+        >Auer<span class="annotation" aria-hidden="true">
+          <svg class="arrow" viewBox="0 0 64 56" fill="none">
+            <path
+              d="M50 50 C24 46 6 40 18 11"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+            />
+            <path
+              d="M18 11 L7 18 M18 11 L23 23"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          <span class="annotation-text">like &ldquo;hour&rdquo;</span>
+        </span></span
+      >
+    </h1>
+    <div class="tagline">
+      <p>Husband and dad of three near Boulder, CO</p>
+      <p>
+        Founder of <a href="https://tessy.fun" rel="noopener noreferrer"
+          >tessy.fun</a
+        >, a site for puzzle lovers.
+      </p>
+      <p>Eng at Nextdoor, former math teacher</p>
+      <p>Lover of board games and long walks on exposed ridgelines</p>
+    </div>
 
-		<nav class="links" aria-label="Social links">
-			{#each links as link}
-				<a href={link.href} rel="noopener noreferrer">{link.label}</a>
-			{/each}
-		</nav>
-	</section>
+    <nav class="links" aria-label="Social links">
+      {#each links as link}
+        <a href={link.href} rel="noopener noreferrer">{link.label}</a>
+      {/each}
+    </nav>
+  </section>
 </main>
 
 <style>
-	:global(:root) {
-		--bg: #0f1115;
-		--fg: #e7e9ee;
-		--muted: #9aa3b2;
-		--accent: #6ea8fe;
+  :global(:root) {
+    --bg: #0f1115;
+    --fg: #e7e9ee;
+    --muted: #9aa3b2;
+    --accent: #b794f6;
 
-		/* Font stacks mirrored from the tessy project. */
-		--font-body:
-			'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
-			Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-		--font-display: 'Archivo', Georgia, serif;
-	}
+    /* Font stacks mirrored from the tessy project. */
+    --font-body: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI",
+      Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+      sans-serif;
+    --font-display: "Archivo", Georgia, serif;
+  }
 
-	:global(html, body) {
-		margin: 0;
-		height: 100%;
-	}
+  :global(html, body) {
+    margin: 0;
+    height: 100%;
+  }
 
-	:global(body) {
-		background: var(--bg);
-		color: var(--fg);
-		font-family: var(--font-body);
-		-webkit-font-smoothing: antialiased;
-	}
+  :global(body) {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
 
-	main {
-		min-height: 100dvh;
-		display: grid;
-		place-items: center;
-		padding: 2rem;
-	}
+  main {
+    min-height: 100dvh;
+    display: grid;
+    justify-items: center;
+    align-content: start;
+    padding: 33vh 2rem 2rem;
+  }
 
-	.card {
-		width: 100%;
-		max-width: 1000px;
-		text-align: left;
-	}
+  .card {
+    width: 100%;
+    max-width: 1000px;
+    text-align: left;
+  }
 
-	h1 {
-		margin: 0;
-		font-family: var(--font-display);
-		font-weight: 700;
-		font-size: clamp(2.5rem, 8vw, 4rem);
-		letter-spacing: -0.02em;
-	}
+  h1 {
+    margin: 0;
+    /* Reserve space below the name for the handwritten annotation. */
+    padding-bottom: 3.5rem;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    letter-spacing: -0.02em;
+  }
 
-	.tagline {
-		margin: 1rem 0 2rem;
-		color: var(--muted);
-		font-size: 1.125rem;
-		line-height: 1.5;
-	}
+  .last-name {
+    position: relative;
+  }
 
-	.tagline p {
-		margin: 0.15rem 0;
-	}
+  /* "like 'hour'" note + hand-drawn arrow pointing up at the last name. */
+  .annotation {
+    position: absolute;
+    top: 100%;
+    left: 0.1em;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.1rem;
+    color: var(--accent);
+    transform: rotate(-5deg);
+    transform-origin: top left;
+    pointer-events: none;
+  }
 
-	.links {
-		display: flex;
-		gap: 1.5rem;
-		justify-content: flex-start;
-		flex-wrap: wrap;
-	}
+  .annotation .arrow {
+    width: clamp(2rem, 5vw, 2.75rem);
+    height: auto;
+    margin-top: -0.35em;
+    /* Nudge just the arrow down/right. */
+    transform: translate(4px, 4px);
+    flex: none;
+  }
 
-	.links a {
-		color: var(--accent);
-		text-decoration: none;
-		font-weight: 500;
-		border-bottom: 1px solid transparent;
-		transition: border-color 0.15s ease;
-	}
+  .annotation-text {
+    font-family: "Caveat", cursive;
+    font-weight: 600;
+    font-size: clamp(1.25rem, 4vw, 1.85rem);
+    line-height: 1;
+    white-space: nowrap;
+    letter-spacing: 0.01em;
+  }
 
-	.links a:hover {
-		border-bottom-color: currentColor;
-	}
+  .tagline {
+    margin: 1rem 0 2rem;
+    color: var(--muted);
+    font-size: 1.125rem;
+    line-height: 1.5;
+  }
+
+  .tagline p {
+    margin: 0.15rem 0;
+  }
+
+  .tagline a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.15s ease;
+  }
+
+  .tagline a:hover {
+    border-bottom-color: currentColor;
+  }
+
+  .links {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .links a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.15s ease;
+  }
+
+  .links a:hover {
+    border-bottom-color: currentColor;
+  }
 </style>

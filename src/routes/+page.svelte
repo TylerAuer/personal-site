@@ -55,7 +55,7 @@
           >tessy.fun</a
         >, a site for puzzle lovers
       </p>
-      <p>Eng at Nextdoor, former math teacher</p>
+      <p>Teacher turned software engineer</p>
       <p>Lover of board games and long walks on exposed ridgelines</p>
     </div>
 

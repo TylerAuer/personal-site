@@ -53,7 +53,7 @@
       <p>
         Founder of <a href="https://tessy.fun" rel="noopener noreferrer"
           >tessy.fun</a
-        >, a site for puzzle lovers.
+        >, a site for puzzle lovers
       </p>
       <p>Eng at Nextdoor, former math teacher</p>
       <p>Lover of board games and long walks on exposed ridgelines</p>

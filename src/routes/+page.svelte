@@ -93,6 +93,8 @@
     -webkit-font-smoothing: antialiased;
   }
 
+  /* Content stays horizontally centered with equal left/right margins.
+     Vertically: ~1/3 down on desktop, near the top on mobile. */
   main {
     min-height: 100dvh;
     display: grid;
@@ -101,9 +103,17 @@
     padding: 33vh 2rem 2rem;
   }
 
+  @media (max-width: 640px) {
+    main {
+      padding: clamp(2rem, 6vh, 4rem) 1.25rem 2rem;
+    }
+  }
+
   .card {
-    width: 100%;
-    max-width: 1000px;
+    /* Shrink-wrap the text block so it centers with equal left/right margins
+       (the text stays left-aligned within the block). */
+    width: max-content;
+    max-width: 100%;
     text-align: left;
   }
 
@@ -156,12 +166,21 @@
   .tagline {
     margin: 1rem 0 2rem;
     color: var(--muted);
-    font-size: 1.125rem;
-    line-height: 1.5;
+    /* Smaller on phones so statements fit on fewer lines. */
+    font-size: clamp(1rem, 4.5vw, 1.125rem);
+    /* Tight within a wrapped line so a wrap reads as continuation... */
+    line-height: 1.35;
   }
 
   .tagline p {
-    margin: 0.15rem 0;
+    /* ...and a clear gap between statements so they don't blur together. */
+    margin: 0 0 0.85rem;
+    /* Avoid awkward single-word orphans on the second wrapped line. */
+    text-wrap: balance;
+  }
+
+  .tagline p:last-child {
+    margin-bottom: 0;
   }
 
   .tagline a {
